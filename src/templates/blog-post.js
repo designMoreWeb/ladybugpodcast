@@ -1,57 +1,59 @@
-import {graphql, Link} from "gatsby"
+import { graphql, Link } from "gatsby"
 import React from "react"
-import {FaDownload, FaPodcast, FaTwitter} from "react-icons/fa"
+import { FaDownload, FaPodcast, FaTwitter } from "react-icons/fa"
 
 import Layout from "../components/layout"
 import Player from "../components/player"
 import SEO from "../components/seo"
-import {rhythm, scale} from "../utils/typography"
+import { rhythm, scale } from "../utils/typography"
 
 class BlogPostTemplate extends React.Component {
   render() {
     const post = this.props.data.markdownRemark
     const siteTitle = this.props.data.site.siteMetadata.title
-    const {previous, next} = this.props.pageContext
+    const { previous, next } = this.props.pageContext
     const seoTitle = `${post.frontmatter.title} | Ladybug Podcast 🐞`
-    const shareTitle = `Listen to ${
-        post.frontmatter
-            .title}, a @LadybugPodcast episode by @kvlly, @emmawedekind, and @aspittel!`
+    const shareTitle = `Listen to ${post.frontmatter.title}, a @LadybugPodcast episode by @kvlly, @emmawedekind, and @aspittel!`
     const shareUrl = `https://ladybug.dev/episode/${post.frontmatter.slug}`
-    const twitterShare = `//twitter.com/share?text=${
-        encodeURIComponent(shareTitle)}&amp;url=${shareUrl}`
+    const twitterShare = `//twitter.com/share?text=${encodeURIComponent(
+      shareTitle
+    )}&amp;url=${shareUrl}`
 
     return (
       <Layout location={this.props.location} title={siteTitle}>
         <SEO
-    title = {seoTitle} description =
-    {
-      post.frontmatter.description || post.excerpt
-    } />
+          title={seoTitle}
+          description={post.frontmatter.description || post.excerpt}
+        />
         <div className="episode">
           <p className="back-to-list">
             <Link to="/">&larr; Back to episodes</Link>
-        <
-        /p>
+          </p>
           <h1>
             {post.frontmatter.title} {post.slug}
-          </h1 >
-        < p
-    className = "post-meta"
-    style = {{ ...scale(-1 / 5), display: `block`, }} >
-                <span>{post.frontmatter.date} |
-            {post.frontmatter.length} |
-            {" "} {post.frontmatter.episode}</span>
+          </h1>
+          <p
+            className="post-meta"
+            style={{ ...scale(-1 / 5), display: `block` }}
+          >
+            <span>
+              {post.frontmatter.date} |{post.frontmatter.length} |{" "}
+              {post.frontmatter.episode}
+            </span>
           </p>
-                <ul class = "post-actions"><li>< a
-    className = "twitter-share"
-    target = "_blank"
-    onClick =
-        "ga('send', 'actions', 'Twitter', 'Share', {post.frontmatter.title});"
-    href =
-        {twitterShare} > <FaTwitter size = "1em" title = "Share on Twitter" />
-        <span>Share on Twitter</span>
+          <ul class="post-actions">
+            <li>
+              <a
+                className="twitter-share"
+                target="_blank"
+                onClick="ga('send', 'actions', 'Twitter', 'Share', {post.frontmatter.title});"
+                href={twitterShare}
+              >
+                {" "}
+                <FaTwitter size="1em" title="Share on Twitter" />
+                <span>Share on Twitter</span>
               </a>
-        </li>
+            </li>
             <li>
               <a
                 target="_blank"
@@ -59,43 +61,39 @@ class BlogPostTemplate extends React.Component {
                 href={post.frontmatter.audio}
               >
                 <FaDownload size="1em" title="Download MP3" />
-        <span>Download MP3</span>
+                <span>Download MP3</span>
               </a>
-        </li>
+            </li>
             <li>
               <a
                 target="_blank"
                 onClick="ga('send', 'actions', 'Subscribe', 'Subscribe', {post.frontmatter.title});"
                 href="https:/ /
          link.chtbl.com / ladybugpodcast "
-         ><FaPodcast size = "1em" title = "Subscribe" />
-        <span>Subscribe</span>
-              </a></li>
+              >
+                <FaPodcast size="1em" title="Subscribe" />
+                <span>Subscribe</span>
+              </a>
+            </li>
           </ul>
-        <p>{post.frontmatter.description}<
-            /p>
+          <p>{post.frontmatter.description}</p>
           <hr
             style={{
               marginBottom: rhythm(1),
             }}
           />
-        <Player show =
-         {
-           post.frontmatter
-         } />
+          <Player show={post.frontmatter} />
           <hr
             style={{
               marginBottom: rhythm(1),
             }}
-          /><
-        div
-    className = "episode-content"
-    dangerouslySetInnerHTML =
-    {
-      { __html: post.html }
-    } />
-        </div > <
-        /Layout>
+          />
+          <div
+            className="episode-content"
+            dangerouslySetInnerHTML={{ __html: post.html }}
+          />
+        </div>{" "}
+      </Layout>
     )
   }
 }

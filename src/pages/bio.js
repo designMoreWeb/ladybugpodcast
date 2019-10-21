@@ -1,5 +1,5 @@
 import React from "react"
-import {FaRegGrinSquintTears} from "react-icons/fa"
+import { FaRegGrinSquintTears } from "react-icons/fa"
 
 import ali from "../../content/assets/ali.png"
 import emma from "../../content/assets/emma.png"
@@ -10,26 +10,26 @@ import myData from "../data/bio_team.json"
 
 class Bio extends React.Component {
   render() {
-    const {location} = this.props;
+    const { location } = this.props
 
-    this.who = 'ali';
+    this.who = "ali"
 
     if (location.state) {
-      this.who = location.state.who;
+      this.who = location.state.who
     }
 
-    this.img = 'ali';
+    this.img = "ali"
 
     switch (this.who) {
-    case 'ali':
-      this.img = ali;
-      break;
-    case 'kelly':
-      this.img = kelly;
-      break;
-    case 'emma':
-      this.img = emma;
-      break;
+      case "ali":
+        this.img = ali
+        break
+      case "kelly":
+        this.img = kelly
+        break
+      case "emma":
+        this.img = emma
+        break
     }
 
     return (
@@ -37,7 +37,6 @@ class Bio extends React.Component {
         <SEO title="Team | Ladybug Podcast 🐞" />
         <div className="team">
           <div className="hosts">
-          
             <div className="hosts_bio">
               <img src={this.img} width="100" height="100" alt="" />
               <h2>{myData[this.who].name}</h2>
@@ -48,9 +47,7 @@ class Bio extends React.Component {
               >
                 @{myData[this.who].twitter}
               </a>
-              <p className="hosts_bio">
-                {myData[this.who].bio}
-              </p>
+              <p className="hosts_bio">{myData[this.who].bio}</p>
             </div>
           </div>
         </div>
