@@ -1,35 +1,35 @@
 import React from "react"
-import Layout from "../components/layout"
-import SEO from "../components/seo"
-import myData from "../data/bio_team.json"
+import {FaRegGrinSquintTears} from "react-icons/fa"
 
 import ali from "../../content/assets/ali.png"
 import emma from "../../content/assets/emma.png"
 import kelly from "../../content/assets/kelly.jpg"
-import { FaRegGrinSquintTears } from "react-icons/fa"
+import Layout from "../components/layout"
+import SEO from "../components/seo"
+import myData from "../data/bio_team.json"
 
 class Bio extends React.Component {
   render() {
-    const { location } = this.props;
+    const {location} = this.props;
 
     this.who = 'ali';
 
-    if (location.state){
+    if (location.state) {
       this.who = location.state.who;
     }
 
     this.img = 'ali';
 
     switch (this.who) {
-      case 'ali':
-        this.img = ali;
-        break;
-      case 'kelly':
-        this.img = kelly;
-        break;
-      case 'emma':
-        this.img = emma;
-        break;
+    case 'ali':
+      this.img = ali;
+      break;
+    case 'kelly':
+      this.img = kelly;
+      break;
+    case 'emma':
+      this.img = emma;
+      break;
     }
 
     return (
